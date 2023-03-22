@@ -2,7 +2,11 @@ package com.workmanagerprac
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.WorkRequest
 import com.workmanagerprac.databinding.ActivityMainBinding
+import com.workmanagerprac.workManager.logWorker
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +18,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        val logWorkRequest:WorkRequest = OneTimeWorkRequestBuilder<logWorker>().build()
+
+        WorkManager.getInstance(this).enqueue(logWorkRequest)
 
     }
 }
