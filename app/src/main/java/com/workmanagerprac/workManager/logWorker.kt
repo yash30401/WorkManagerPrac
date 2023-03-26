@@ -7,7 +7,10 @@ import androidx.work.WorkerParameters
 
 class logWorker(context: Context, workParams:WorkerParameters):Worker(context,workParams) {
     override fun doWork(): Result {
-        Log.d("WORKER","Work Called")
+
+        val data = inputData.getString("name")
+
+        Log.d("WORKER",data.toString())
 
         return Result.success()
     }
